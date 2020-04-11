@@ -201,7 +201,7 @@ Create Table `complaints_table`(
 	foreign key (`classroomId`) references `classroom_lookup_table`(`classroomId`)
 );
 
-insert into `complaints_table`(`active`,`description`,`loggedDate`,`imgage`,`complaintStatusId`,`userId`, `floorId`, `sectionId`, `classroomId`) values
+insert into `complaints_table`(`active`,`description`,`loggedDate`,`image`,`complaintStatusId`,`userId`, `floorId`, `sectionId`, `classroomId`) values
 ('1','There is garbage in ground floor','2020:03:12 08:00:00',null,3,2,1,1,2),
 ('1','There is garbage in first floor','2020:03:15 08:00:00',null,2,2,2,4,null),
 ('1','There is garbage in second floor','2020:03:18 08:00:00',null,1,2,3,5,null);

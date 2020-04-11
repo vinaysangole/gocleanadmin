@@ -5,13 +5,28 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.org.db.ConnectionManager;
 import com.org.db.Queries;
+import com.org.model.User;
 
 public class UserServices {
 	
-	public static int getUserByLoginIdNPassword (String loginId, String password) {
-		int userId = -1;
+	public static User getUser(String loginId, String password) {
+		User user = getUserByLoginIdNPassword (loginId, password);
+		if(user != null) {
+			String role = getRoleByRoleId(user.getRoleId());
+			
+			if(StringUtils.isNotEmpty(role))
+				user.setRole(role);
+		}
+		
+		return user;
+	}
+	
+	public static User getUserByLoginIdNPassword (String loginId, String password) {
+		User user = null;
 		Connection connection =  ConnectionManager.getConnection();
 		PreparedStatement  statement = null;
 		ResultSet resultSet = null;
@@ -22,7 +37,9 @@ public class UserServices {
 			
 			resultSet = statement.executeQuery();
 			if (resultSet.next()) {
-				userId = resultSet.getInt("userId");
+				user = new User();
+				user.setUserId(resultSet.getInt("userId"));
+				user.setRoleId(resultSet.getInt("roleId"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -35,7 +52,33 @@ public class UserServices {
 			}
 		}
 		
-		return userId;
+		return user;
 	}
 	
+	public static String getRoleByRoleId (int roleId) {
+		String role = null;
+		Connection connection =  ConnectionManager.getConnection();
+		PreparedStatement  statement = null;
+		ResultSet resultSet = null;
+		try {
+			statement = connection.prepareStatement(Queries.GET_ROLE_BY_ROLEID);
+			statement.setInt(1, roleId);
+			
+			resultSet = statement.executeQuery();
+			if (resultSet.next()) {
+				role = resultSet.getString("roleName");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				resultSet.close();
+				statement.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return role;
+	}
 }

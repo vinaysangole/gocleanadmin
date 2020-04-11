@@ -50,6 +50,16 @@
     <url-pattern>/getcomplaint</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>getcomplaintbyuser</servlet-name>
+    <servlet-class>com.org.handler.GetComplaintsByUserHandler</servlet-class>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getcomplaintbyuser</servlet-name>
+    <url-pattern>/getcomplaintbyuser</url-pattern>
+  </servlet-mapping>
+  
   <session-config>
     <session-timeout>30</session-timeout>
   </session-config>
