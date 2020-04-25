@@ -187,7 +187,7 @@ Create Table `complaints_table`(
 	`active` tinyint(1),
 	`description` text,
 	`loggedDate` datetime default NULL,
-	`image` LONGBLOB default NULL,
+	`image` text,
 	`complaintStatusId` int(10),
 	`userId` int(10),
 	`floorId` int(10),

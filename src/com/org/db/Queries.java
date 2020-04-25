@@ -21,6 +21,4 @@ public class Queries {
 
 	public final static String INSERT_COMPLAINTS = "insert into `complaints_table`(`active`,`description`,`loggedDate`,`image`,`complaintStatusId`,`userId`,`floorId`, `sectionId`, `classroomId`) "
 			+ "values ('1',?,?,?,?,?,?,?,?)";
-	public final static String INSERT_COMPLAINTS_TEMP = "insert into `complaints_table`(`active`,`description`,`loggedDate`,`complaintStatusId`,`userId`,`floorId`, `sectionId`, `classroomId`) "
-			+ "values ('1',?,?,?,?,?,?,?)";
 }

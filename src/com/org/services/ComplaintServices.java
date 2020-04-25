@@ -168,7 +168,7 @@ public class ComplaintServices {
 	}
 	
 	
-	public static int insertComplaint ( String description, byte [] image, int userId, int floorId, int sectionId, Integer classroomId) {
+	public static int insertComplaint ( String description, String image, int userId, int floorId, int sectionId, Integer classroomId) {
 		int insertStatusId = -1;
 		
 		int complaintStatusId = getComplaintStatusByName(COMPLAINT_LOGGED);
@@ -177,14 +177,15 @@ public class ComplaintServices {
 		Connection connection =  ConnectionManager.getConnection();
 		PreparedStatement  statement = null;
 		try {
-			statement = connection.prepareStatement(Queries.INSERT_COMPLAINTS_TEMP);
+			statement = connection.prepareStatement(Queries.INSERT_COMPLAINTS);
 			statement.setString(1, description);
 			statement.setDate(2, new java.sql.Date(loggedDate.getTime()));
-			statement.setInt(3, complaintStatusId);
-			statement.setInt(4, userId);
-			statement.setInt(5, floorId);
-			statement.setInt(6, sectionId);
-			statement.setInt(7, classroomId);
+			statement.setString(3, image);
+			statement.setInt(4, complaintStatusId);
+			statement.setInt(5, userId);
+			statement.setInt(6, floorId);
+			statement.setInt(7, sectionId);
+			statement.setInt(8, classroomId);
 			
 			insertStatusId = statement.executeUpdate();
 		} catch (SQLException e) {
