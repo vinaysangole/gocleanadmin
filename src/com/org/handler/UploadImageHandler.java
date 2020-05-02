@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.lang3.StringUtils;
 
 import com.google.gson.JsonObject;
 
@@ -42,6 +43,8 @@ public class UploadImageHandler extends HttpServlet {
 			out.close();
 			return;
 		}
+		
+		String fileName = request.getParameter("fileName");
 
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		// maximum size that will be stored in memory
@@ -64,7 +67,9 @@ public class UploadImageHandler extends HttpServlet {
 				if (!fi.isFormField()) {
 					// Get the uploaded file parameters
 					String fieldName = fi.getFieldName();
-					String fileName = fi.getName();
+					if(StringUtils.isEmpty(fileName)) {
+						fileName = fi.getName();
+					}
 					String contentType = fi.getContentType();
 					boolean isInMemory = fi.isInMemory();
 					long sizeInBytes = fi.getSize();
