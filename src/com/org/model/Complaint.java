@@ -7,7 +7,7 @@ public class Complaint {
 	private int complaintId;
 	private String description;
 	private Date loggedDate;
-	private byte[] image;
+	private String image;
 	private int complaintStatusId;
 	private int userId;
 	private int floorId;
@@ -38,11 +38,11 @@ public class Complaint {
 		this.loggedDate = loggedDate;
 	}
 
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 
