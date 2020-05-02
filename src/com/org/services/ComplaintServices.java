@@ -117,7 +117,7 @@ public class ComplaintServices {
 				complaint.setComplaintId(resultSet.getInt("complaintId"));
 				complaint.setDescription(resultSet.getString("description"));
 				complaint.setLoggedDate(resultSet.getDate("loggedDate"));
-				complaint.setImage(resultSet.getBlob("image") != null ? resultSet.getBlob("image").toString().getBytes() : null);
+				complaint.setImage(resultSet.getString("image"));
 				complaint.setComplaintStatusId(resultSet.getInt("complaintStatusId"));
 				complaint.setUserId(resultSet.getInt("userId"));
 				complaint.setFloorId(resultSet.getInt("floorId"));

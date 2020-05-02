@@ -45,7 +45,7 @@ public class Complaint {
 	public void setImage(String image) {
 		this.image = image;
 	}
-
+	
 	public int getComplaintStatusId() {
 		return complaintStatusId;
 	}
@@ -90,4 +90,6 @@ public class Complaint {
 	public String toString() {
 		return "complaintId = " + complaintId + "\t floorId = " + floorId + "\t sectionId = " + sectionId + "\t classroomId = " + classroomId + "\t description = " + description;
 	}
+
+	
 }
