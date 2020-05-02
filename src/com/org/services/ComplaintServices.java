@@ -36,7 +36,7 @@ public class ComplaintServices {
 		for(Complaint complaint : complaints) {
 			JsonObject complaintJSON = new JsonObject();
 			complaintJSON.addProperty("complaintId", complaint.getComplaintId());
-			complaintJSON.addProperty("cescription", complaint.getDescription());
+			complaintJSON.addProperty("description", complaint.getDescription());
 			complaintJSON.addProperty("loggedDate", complaint.getLoggedDate().toString());
 			complaintJSON.addProperty("image", complaint.getImage() != null ? complaint.getImage().toString() : null);
 			complaintJSON.addProperty("complaintStatusId", complaint.getComplaintStatusId());
