@@ -2,8 +2,6 @@ package com.org.handler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Map;
-import java.util.Map.Entry;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,15 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.org.services.ComplaintServices;
-import com.org.services.LocationServices;
 
 public class LodgeComplaintHandler extends HttpServlet{
 	
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
 		
 		String description = request.getParameter("description");
